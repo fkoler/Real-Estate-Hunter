@@ -1,4 +1,4 @@
-import '@/assets/styles/globals.scss';
+import '@/assets/styles/globals.css';
 
 export const metadata = {
     title: 'RealEstateHunter | Find The Perfect Rental',
