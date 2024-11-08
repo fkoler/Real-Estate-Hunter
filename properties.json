@@ -9,7 +9,7 @@
             "street": "120 Tremont Street",
             "city": "Toronto",
             "state": "ON",
-            "zipcode": "02108"
+            "zipcode": "43964"
         },
         "beds": 2,
         "baths": 1,
@@ -52,9 +52,9 @@
         "description": "A cozy downtown loft with great city views.",
         "location": {
             "street": "45 Main Street",
-            "city": "New York",
-            "state": "NY",
-            "zipcode": "10001"
+            "city": "Vancouver",
+            "state": "BC",
+            "zipcode": "V6E 0A8"
         },
         "beds": 1,
         "baths": 1,
@@ -96,9 +96,9 @@
         "description": "Experience luxury in this stunning condo with breathtaking views.",
         "location": {
             "street": "500 Lux Lane",
-            "city": "Los Angeles",
-            "state": "CA",
-            "zipcode": "90001"
+            "city": "Fredericton",
+            "state": "NB",
+            "zipcode": "E3A 0B7"
         },
         "beds": 3,
         "baths": 2,
@@ -141,10 +141,10 @@
         "type": "Cottage Or Cabin",
         "description": "Escape to this charming cottage for a peaceful retreat.",
         "location": {
-            "street": "123 Countryside Lane",
-            "city": "Austin",
-            "state": "TX",
-            "zipcode": "78701"
+            "street": "123 Alaska Highway",
+            "city": "Whitehorse",
+            "state": "YT",
+            "zipcode": "Y1A 1C9"
         },
         "beds": 1,
         "baths": 1,
@@ -175,10 +175,10 @@
         "type": "Studio",
         "description": "Stay in style in this modern downtown studio apartment.",
         "location": {
-            "street": "75 Urban Avenue",
-            "city": "Chicago",
-            "state": "IL",
-            "zipcode": "60601"
+            "street": "30 Hargrave St",
+            "city": "Winnipeg",
+            "state": "MB",
+            "zipcode": "R3C 1N1"
         },
         "beds": 1,
         "baths": 1,
@@ -212,9 +212,9 @@
         "description": "Escape to this seaside house for a relaxing getaway.",
         "location": {
             "street": "456 Oceanfront Drive",
-            "city": "Miami",
-            "state": "FL",
-            "zipcode": "33101"
+            "city": "Halifax",
+            "state": "NS",
+            "zipcode": "B3H 0B3"
         },
         "beds": 4,
         "baths": 3,
@@ -247,10 +247,10 @@
         "type": "Cottage Or Cabin",
         "description": "Experience nature in this cozy rustic cabin.",
         "location": {
-            "street": "789 Forest Lane",
-            "city": "Denver",
-            "state": "CO",
-            "zipcode": "80201"
+            "street": "411 Prospect Drive",
+            "city": "Saskatoon",
+            "state": "SK",
+            "zipcode": "S0J 2Y0"
         },
         "beds": 2,
         "baths": 1,
@@ -282,10 +282,10 @@
         "type": "Chalet",
         "description": "Hit the slopes from this cozy ski-in/ski-out chalet.",
         "location": {
-            "street": "321 Mountain Road",
-            "city": "Aspen",
-            "state": "CO",
-            "zipcode": "81611"
+            "street": "Bighorn no. 8",
+            "city": "Calgary",
+            "state": "AB",
+            "zipcode": "T1Y 1B4"
         },
         "beds": 3,
         "baths": 2,
@@ -318,9 +318,9 @@
         "description": "Enjoy stunning mountain views from this spacious retreat.",
         "location": {
             "street": "600 Summit Drive",
-            "city": "Boulder",
-            "state": "CO",
-            "zipcode": "80301"
+            "city": "Charlottetown",
+            "state": "PE",
+            "zipcode": "C1A 0A9"
         },
         "beds": 4,
         "baths": 3,
@@ -354,9 +354,9 @@
         "description": "Step back in time with a stay in this historic downtown loft.",
         "location": {
             "street": "123 History Lane",
-            "city": "Philadelphia",
-            "state": "PA",
-            "zipcode": "19101"
+            "city": "Québec City",
+            "state": "QC",
+            "zipcode": "G1A 0B1"
         },
         "beds": 2,
         "baths": 1,
