@@ -1,20 +1,35 @@
-import { useMemo } from 'react';
-
 import PropertyCard from '@/components/PropertyCard';
-import properties from '@/properties.json';
 
-const PropertiesPage = () => {
-    const sortedProperties = useMemo(
-        () => [...properties].sort((a, b) => a._id - b._id),
-        []
-    );
+const fetchProperties = async () => {
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_DOMAIN}/properties`
+        );
+
+        if (!res.ok) {
+            throw new Error('Failed to fetch data');
+        }
+
+        return await res.json();
+    } catch (err) {
+        console.error(err);
+        return [];
+    }
+};
+
+const PropertiesPage = async () => {
+    const properties = await fetchProperties();
+    properties.length > 0 &&
+        properties.sort(
+            (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+        );
 
     return (
         <section className='px-4 py-6'>
             <div className='container-xl lg:container m-auto px-4 py-6'>
-                {sortedProperties.length > 0 ? (
+                {properties ? (
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-                        {sortedProperties.map((property) => (
+                        {properties.map((property) => (
                             <PropertyCard
                                 key={property._id}
                                 property={property}
