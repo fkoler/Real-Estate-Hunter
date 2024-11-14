@@ -8,7 +8,7 @@ const InfoBoxes = () => {
                     <InfoBox
                         heading='For Renters'
                         backgroundColor='bg-gray-100'
-                        hover='opacity-80'
+                        hover='bg-gray-800'
                         buttonInfo={{
                             text: 'Browse Properties',
                             link: '/properties',
