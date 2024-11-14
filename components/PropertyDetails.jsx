@@ -13,17 +13,18 @@ const PropertyDetails = ({ property }) => {
             <div className='bg-white p-6 rounded-lg shadow-md text-center md:text-left'>
                 <div className='text-gray-500 mb-4'>{property.type}</div>
                 <h1 className='text-3xl font-bold mb-4'>{property.name}</h1>
-
                 <div className='text-gray-500 mb-4 flex align-middle justify-center md:justify-start'>
                     <FaMapMarker className='text-lg text-orange-700 mr-2' />
 
                     <p className='text-orange-700'>
-                        {property.location.street} {property.location.city}{' '}
-                        {property.location.state}
+                        {property.location.street}
+                        {','} {property.location.city} {property.location.state}
+                        {', '}
+                        {property.location.zipcode}
                     </p>
                 </div>
 
-                <h3 className='text-lg font-bold my-6 bg-gray-800 text-white p-2'>
+                <h3 className='text-lg text-center font-bold my-6 bg-gray-600 text-white p-2'>
                     Rates & Options
                 </h3>
 
@@ -103,7 +104,7 @@ const PropertyDetails = ({ property }) => {
             <div className='bg-white p-6 rounded-lg shadow-md mt-6'>
                 <h3 className='text-lg font-bold mb-6'>Amenities</h3>
 
-                <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 list-none space-y-2'>
+                <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 list-none'>
                     {property.amenities.map((amenity, k) => (
                         <li key={k}>
                             <FaCheck className='text-green-600 inline-block mr-2' />

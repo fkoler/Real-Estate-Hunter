@@ -4,10 +4,11 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
 
-import { fetchProperty } from '@/utils/requests';
-
-import ProperyHeaderImage from '@/components/ProperyHeaderImage';
+import ProperyHeaderImage from '@/components/PropertyHeaderImage';
 import PropertyDetails from '@/components/PropertyDetails';
+import Loader from '@/components/Loader';
+
+import { fetchProperty } from '@/utils/requests';
 
 const PropertyPage = () => {
     const { id } = useParams();
@@ -17,31 +18,39 @@ const PropertyPage = () => {
 
     useEffect(() => {
         const fetchPropertyData = async () => {
-            if (!id) return;
+            if (!id) {
+                setLoading(false);
+                return;
+            }
 
             try {
                 const propertyData = await fetchProperty(id);
-
                 setProperty(propertyData);
-            } catch (err) {
-                console.error('Error fetching property: ', err);
+            } catch (error) {
+                console.error('Error fetching property:', error);
             } finally {
                 setLoading(false);
             }
         };
 
-        if (!property) fetchPropertyData();
-    }, [id, property]);
+        fetchPropertyData();
+    }, [id]);
+
+    if (loading) {
+        return <Loader loading={loading} />;
+    }
+
+    if (!property) {
+        return (
+            <h1 className='text-center text-2xl font-bold mt-10'>
+                Property Not Found
+            </h1>
+        );
+    }
 
     return (
         <>
-            {loading ? null : property ? (
-                <ProperyHeaderImage image={property.images[0]} />
-            ) : (
-                <h1 className='text-center text-2xl font-bold mt-10'>
-                    Property Not Found
-                </h1>
-            )}
+            <ProperyHeaderImage image={property.images[0]} />
 
             <section>
                 <div className='container m-auto py-6 px-6'>
@@ -59,19 +68,19 @@ const PropertyPage = () => {
                     <div className='grid grid-cols-1 md:grid-cols-70/30 w-full gap-6'>
                         <PropertyDetails property={property} />
 
-                        {/* <!-- Sidebar --> */}
+                        {/* Sidebar */}
                         <aside className='space-y-4'>
                             <button className='bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center'>
-                                <i className='fas fa-bookmark mr-2'></i>{' '}
+                                <i className='fas fa-bookmark mr-2'></i>
                                 Bookmark Property
                             </button>
 
                             <button className='bg-orange-500 hover:bg-orange-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center'>
-                                <i className='fas fa-share mr-2'></i> Share
-                                Property
+                                <i className='fas fa-share mr-2'></i>
+                                Share Property
                             </button>
 
-                            {/* <!-- Contact Form --> */}
+                            {/* Contact Form */}
                             <div className='bg-white p-6 rounded-lg shadow-md'>
                                 <h3 className='text-xl font-bold mb-6'>
                                     Contact Property Manager
@@ -85,7 +94,6 @@ const PropertyPage = () => {
                                         >
                                             Name:
                                         </label>
-
                                         <input
                                             className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                             id='name'
@@ -101,7 +109,6 @@ const PropertyPage = () => {
                                         >
                                             Email:
                                         </label>
-
                                         <input
                                             className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                             id='email'
@@ -117,7 +124,6 @@ const PropertyPage = () => {
                                         >
                                             Phone:
                                         </label>
-
                                         <input
                                             className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                             id='phone'
@@ -125,7 +131,6 @@ const PropertyPage = () => {
                                             placeholder='Enter your phone number'
                                         />
                                     </div>
-
                                     <div className='mb-4'>
                                         <label
                                             className='block text-gray-700 text-sm font-bold mb-2'
@@ -133,20 +138,18 @@ const PropertyPage = () => {
                                         >
                                             Message:
                                         </label>
-
                                         <textarea
                                             className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 h-44 focus:outline-none focus:shadow-outline'
                                             id='message'
                                             placeholder='Enter your message'
                                         ></textarea>
                                     </div>
-
                                     <div>
                                         <button
                                             className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center'
                                             type='submit'
                                         >
-                                            <i className='fas fa-paper-plane mr-2'></i>{' '}
+                                            <i className='fas fa-paper-plane mr-2'></i>
                                             Send Message
                                         </button>
                                     </div>

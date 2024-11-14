@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const ProperyHeaderImage = ({ image }) => {
+const PropertyHeaderImage = ({ image }) => {
     return (
         <section>
             <div className='container-xl m-auto'>
@@ -20,4 +20,4 @@ const ProperyHeaderImage = ({ image }) => {
     );
 };
 
-export default ProperyHeaderImage;
+export default PropertyHeaderImage;
