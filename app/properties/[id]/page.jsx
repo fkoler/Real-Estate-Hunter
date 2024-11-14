@@ -11,10 +11,9 @@ import Loader from '@/components/Loader';
 import { fetchProperty } from '@/utils/requests';
 
 const PropertyPage = () => {
-    const { id } = useParams();
-
     const [property, setProperty] = useState(null);
     const [loading, setLoading] = useState(true);
+    const { id } = useParams();
 
     useEffect(() => {
         const fetchPropertyData = async () => {
@@ -99,9 +98,11 @@ const PropertyPage = () => {
                                             id='name'
                                             type='text'
                                             placeholder='Enter your name'
+                                            autoComplete='name'
                                             required
                                         />
                                     </div>
+
                                     <div className='mb-4'>
                                         <label
                                             className='block text-gray-700 text-sm font-bold mb-2'
@@ -114,9 +115,11 @@ const PropertyPage = () => {
                                             id='email'
                                             type='email'
                                             placeholder='Enter your email'
+                                            autoComplete='email'
                                             required
                                         />
                                     </div>
+
                                     <div className='mb-4'>
                                         <label
                                             className='block text-gray-700 text-sm font-bold mb-2'
@@ -129,8 +132,10 @@ const PropertyPage = () => {
                                             id='phone'
                                             type='text'
                                             placeholder='Enter your phone number'
+                                            autoComplete='phone'
                                         />
                                     </div>
+
                                     <div className='mb-4'>
                                         <label
                                             className='block text-gray-700 text-sm font-bold mb-2'
@@ -142,8 +147,10 @@ const PropertyPage = () => {
                                             className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 h-44 focus:outline-none focus:shadow-outline'
                                             id='message'
                                             placeholder='Enter your message'
+                                            autoComplete='message'
                                         ></textarea>
                                     </div>
+
                                     <div>
                                         <button
                                             className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center'
