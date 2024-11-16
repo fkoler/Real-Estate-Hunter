@@ -13,6 +13,7 @@ import profileDefault from '@/assets/images/profile.png';
 
 const Navbar = () => {
     const { data: session } = useSession();
+    const profileImg = session?.user?.image;
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -198,8 +199,10 @@ const Navbar = () => {
                                         </span>
                                         <Image
                                             className='h-8 w-8 rounded-full'
-                                            src={profileDefault}
-                                            alt='profileDefault'
+                                            src={profileImg || profileDefault}
+                                            alt='profileImage'
+                                            width={40}
+                                            height={40}
                                         />
                                     </button>
                                 </div>
