@@ -54,6 +54,7 @@ const AddPropertyForm = () => {
             }));
         }
     };
+
     const handleAmenitiesChange = (e) => {
         const { value, checked } = e.target;
 
@@ -74,7 +75,21 @@ const AddPropertyForm = () => {
             amenities: updatedAmenities,
         }));
     };
-    const handleImageChange = () => {};
+
+    const handleImageChange = (e) => {
+        const { files } = e.target;
+
+        const updatedImages = [...fields.images];
+
+        for (const file of files) {
+            updatedImages.push(file);
+        }
+
+        setFields((prevFields) => ({
+            ...prevFields,
+            images: updatedImages,
+        }));
+    };
 
     return (
         mounted && (
