@@ -54,7 +54,26 @@ const AddPropertyForm = () => {
             }));
         }
     };
-    const handleAmenitiesChange = () => {};
+    const handleAmenitiesChange = (e) => {
+        const { value, checked } = e.target;
+
+        const updatedAmenities = [...fields.amenities];
+
+        if (checked) {
+            updatedAmenities.push(value);
+        } else {
+            const index = updatedAmenities.indexOf(value);
+
+            if (index !== -1) {
+                updatedAmenities.splice(index, 1);
+            }
+        }
+
+        setFields((prevFields) => ({
+            ...prevFields,
+            amenities: updatedAmenities,
+        }));
+    };
     const handleImageChange = () => {};
 
     return (
@@ -120,7 +139,7 @@ const AddPropertyForm = () => {
                         className='border rounded w-full py-2 px-3'
                         rows='4'
                         placeholder='Add an optional description of your property'
-                        value={fields.type}
+                        value={fields.description}
                         onChange={handleChange}
                     ></textarea>
                 </div>
