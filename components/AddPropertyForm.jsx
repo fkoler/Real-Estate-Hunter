@@ -34,7 +34,26 @@ const AddPropertyForm = () => {
         setMounted(true);
     }, []);
 
-    const handleChange = () => {};
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        if (name.includes('.')) {
+            const [outerKey, innerKey] = name.split('.');
+
+            setFields((prevFields) => ({
+                ...prevFields,
+                [outerKey]: {
+                    ...prevFields[outerKey],
+                    [innerKey]: value,
+                },
+            }));
+        } else {
+            setFields((prevFields) => ({
+                ...prevFields,
+                [name]: value,
+            }));
+        }
+    };
     const handleAmenitiesChange = () => {};
     const handleImageChange = () => {};
 
