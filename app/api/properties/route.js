@@ -1,3 +1,7 @@
+import { getServerSession } from 'next-auth/next';
+
+import { authOptions } from '@/utils/authOptions';
+
 import connectDB from '@/config/db';
 import Property from '@/models/Property';
 
@@ -20,6 +24,14 @@ export const GET = async (req) => {
 // POST /api/properties
 export const POST = async (req) => {
     try {
+        await connectDB();
+
+        const session = await getServerSession(authOptions);
+
+        if (!session) return new Response('Unauthorized', { status: 401 });
+
+        const userId = session.user.id;
+
         const formData = await req.formData();
 
         const amenities = formData.getAll('amenities');
@@ -51,6 +63,7 @@ export const POST = async (req) => {
                 email: formData.get('seller_info.email'),
                 phone: formData.get('seller_info.phone'),
             },
+            owner: userId,
             images,
         };
 
