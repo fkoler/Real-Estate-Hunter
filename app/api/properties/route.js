@@ -1,6 +1,7 @@
 import { getServerSession } from 'next-auth/next';
 
 import { authOptions } from '@/utils/authOptions';
+import { getSessionUser } from '@/utils/getSessionUser';
 
 import connectDB from '@/config/db';
 import Property from '@/models/Property';
@@ -26,11 +27,13 @@ export const POST = async (req) => {
     try {
         await connectDB();
 
-        const session = await getServerSession(authOptions);
+        const sessionUser = await getSessionUser();
 
-        if (!session) return new Response('Unauthorized', { status: 401 });
+        if (!sessionUser || !sessionUser.userId) {
+            return new Response('User ID is required', { status: 401 });
+        }
 
-        const userId = session.user.id;
+        const { userId } = sessionUser;
 
         const formData = await req.formData();
 
@@ -64,14 +67,19 @@ export const POST = async (req) => {
                 phone: formData.get('seller_info.phone'),
             },
             owner: userId,
-            images,
+            // images,
         };
 
-        console.log(propertyData);
+        const newProperty = new Property(propertyData);
+        await newProperty.save();
 
-        return new Response(JSON.stringify({ message: 'Success' }), {
-            status: 200,
-        });
+        return Response.redirect(
+            `${process.env.NEXTAUTH_URL}/properties/${newProperty._id}`
+        );
+
+        // return new Response(JSON.stringify({ message: 'Success' }), {
+        //     status: 200,
+        // });
     } catch (err) {
         return new Response('Oops! Failed to post property', { status: 500 });
     }
