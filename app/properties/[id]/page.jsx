@@ -6,6 +6,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 
 import ProperyHeaderImage from '@/components/PropertyHeaderImage';
 import PropertyDetails from '@/components/PropertyDetails';
+import PropertyImages from '@/components/PropertyImages';
 import Loader from '@/components/Loader';
 
 import { fetchProperty } from '@/utils/requests';
@@ -166,6 +167,8 @@ const PropertyPage = () => {
                     </div>
                 </div>
             </section>
+
+            <PropertyImages images={property.images} />
         </>
     );
 };
